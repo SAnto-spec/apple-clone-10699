@@ -1,0 +1,355 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+               "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+body {
+  background: #f5f5f7;
+  color: #1d1d1f;
+}
+
+/* NAVBAR */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.8);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  z-index: 100;
+}
+
+.logo-img {
+  height: 30px;              /* Apple navbar size */
+  width: auto;
+  cursor: pointer;
+}
+
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  margin: 0 10px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #1d1d1f;
+}
+
+/* Hamburger (hidden on desktop) */
+.hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Mobile sidebar */
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: -320px;
+  width: 280px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.12);
+  z-index: 300;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: left 0.28s ease;
+}
+
+.mobile-sidebar.open {
+  left: 0;
+}
+
+.mobile-close {
+  align-self: flex-end;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.mobile-nav a {
+  color: #1d1d1f;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* Overlay when sidebar open */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 250;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.overlay.show {
+  opacity: 1;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero.light { background: #f5f5f7; 
+ padding: 80px 20px 30px;}
+.hero.dark { background: #000; color: #fff; }
+.hero.tv { background: linear-gradient(#cfe9f6, #fff); }
+
+.hero h1 {
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.hero-img {
+  max-width: 700px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding: auto;
+}
+
+.hero-img1 {
+  max-width: 900px;
+  width: 100%;
+  margin-top: 40px;
+  align-items: center;
+}
+
+/* BUTTONS */
+button {
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.primary {
+  background: #0071e3;
+  color: #fff;
+}
+
+.secondary {
+  background: #e8e8ed;
+}
+
+.outline {
+  background: transparent;
+  border: 1px solid #0071e3;
+  color: #0071e3;
+}
+
+
+/* Layout helper for grouped buttons */
+.buttons {
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Ensure buttons render predictably and don't stretch/distort */
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  min-height: 40px;
+}
+
+/* TV-specific outline adjustments */
+.hero.tv .outline {
+  padding: 10px 22px;
+  border-width: 1px;
+  border-radius: 20px;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Slightly constrain the TV hero image to avoid layout shift */
+.hero-img1 {
+  max-width: 900px;
+  width: 100%;
+  margin-top: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* APPLE GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+/* CARD */
+.card {
+  height: 620px;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card.dark {
+  background: #000;
+  color: #fff;
+}
+
+.card.light {
+  background: #f5f5f7;
+}
+
+/* TEXT */
+.card-content.center {
+  padding: 50px 30px 20px;
+  text-align: center;
+}
+
+.card-content h2 {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.card-content p {
+  font-size: 18px;
+  margin: 10px 0 18px;
+}
+
+/* IMAGE */
+.card-image.big {
+  flex: 1;
+  position: relative;
+}
+
+.card-image.big img {
+  position: absolute;
+  bottom: 0;
+  width: 85%;
+  max-height: 65%;
+  height: auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 40px 16px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .hero-img,
+  .hero-img1 {
+    max-width: 100%;
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  .buttons {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .hero.tv .outline {
+    padding: 10px 18px;
+  }
+
+  .card {
+    height: auto;
+  }
+
+  .card-content.center {
+    padding: 32px 20px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 10px 12px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .buttons {
+    gap: 8px;
+    padding-top: 8px;
+  }
+
+  .buttons button {
+    width: 100%;
+    max-width: none;
+    padding: 12px 16px;
+    border-radius: 12px;
+  }
+
+  .hero-img,
+  .hero-img1 {
+    margin-top: 16px;
+  }
+
+  .card-content.center {
+    padding: 24px 16px 16px;
+  }
+
+  .card {
+    border-radius: 12px;
+  }
+
+  /* On small screens hide the desktop nav links and show hamburger */
+  nav { display: none; }
+  .hamburger { display: inline-block; }
+  .mobile-sidebar { left: -320px; }
+  .overlay[hidden] { display: none; }
+}

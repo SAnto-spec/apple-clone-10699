@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apple (Clone)</title>
+  <link rel="stylesheet" href="apple.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="nav-container">
+    <img src="assets/applelogo.jpg" alt="Apple" class="logo-img">
+
+    <nav>
+      <a href="#">Store</a>
+      <a href="#">Mac</a>
+      <a href="#">iPad</a>
+      <a href="#">iPhone</a>
+      <a href="#">Watch</a>
+      <a href="#">AirPods</a>
+      <a href="#">TV & Home</a>
+      <a href="#">Support</a>
+    </nav>
+    <div class="icons">🔍 🛍️</div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<!-- Mobile sidebar (hidden on desktop) -->
+<div class="mobile-sidebar" id="mobileSidebar" aria-hidden="true">
+  <button class="mobile-close" id="mobileClose" aria-label="Close menu">✕</button>
+  <nav class="mobile-nav">
+    <a href="#">Store</a>
+    <a href="#">Mac</a>
+    <a href="#">iPad</a>
+    <a href="#">iPhone</a>
+    <a href="#">Watch</a>
+    <a href="#">AirPods</a>
+    <a href="#">TV & Home</a>
+    <a href="#">Support</a>
+  </nav>
+</div>
+
+<div class="overlay" id="overlay" hidden></div>
+
+<!-- iPhone HERO -->
+<section class="hero light">
+  <h1>iPhone</h1>
+  <p>Say hello to the latest generation of iPhone.</p>
+  <div class="buttons">
+    <button class="primary">Learn more</button>
+    <button class="secondary">Shop iPhone</button>
+  </div>
+  <img src="assets/image.png" class="hero-img" alt="iPhone device">
+</section>
+
+<!-- CREATOR STUDIO -->
+<section class="hero dark">
+  <h1>Creator Studio</h1>
+  <p>Endless creativity. One collection of apps.</p>
+  <p class="sub">₹399/month or ₹3999/year</p>
+  <div class="buttons">
+    <button class="primary">Learn more</button>
+    <button class="outline">Try it free</button>
+  </div>
+  <img src="assets/Screenshot 2026-01-30 003226.png" class="hero-img" alt="Creator Studio apps">
+</section>
+
+<!-- APPLE-STYLE GRID -->
+<section class="grid">
+
+  <!-- Privacy -->
+  <div class="card dark">
+    <div class="card-content center">
+      <h2>Privacy</h2>
+      <p>Designed into everything we do.</p>
+      <button class="primary">Learn more</button>
+    </div>
+    <div class="card-image big" >
+      <img src="assets/appleprivacy.jpg" alt="Privacy feature">
+      
+    </div>
+  </div>
+
+  <!-- iPad Air -->
+  <div class="card light">
+    <div class="card-content center">
+      <h2>iPad Air</h2>
+      <p>Now supercharged by the M3 chip.</p>
+      <button class="primary">Buy</button>
+    </div>
+    <div class="card-image big">
+      <img src="assets/Screenshot 2026-01-30 003357.png" alt="iPad Air device">
+    </div>
+  </div>
+
+  <!-- Apple Watch -->
+  <div class="card dark">
+    <div class="card-content center">
+      <h2>Apple Watch</h2>
+      <p>The new Black Unity band.</p>
+      <button class="secondary">Shop</button>
+    </div>
+    <div class="card-image big">
+      <img src="assets/Screenshot 2026-01-30 003414.png" alt="Apple Watch">
+    </div>
+  </div>
+
+  <!-- Watch Series 11 -->
+  <div class="card light">
+    <div class="card-content center">
+      <h2>Watch Series 11</h2>
+      <p>Turn resolutions into routines.</p>
+      <button class="primary">Buy</button>
+    </div>
+    <div class="card-image big">
+      <img src="assets/Screenshot 2026-01-30 003430.png" alt="Watch Series 11">
+    </div>
+  </div>
+
+  <div class="card dark">
+    <div class="card-content center">
+      <h2>MacBook Pro 14″</h2>
+      <p>Supercharged by M5.</p>
+      <button class="primary">Buy</button>
+    </div>
+    <div class="card-image big">
+      <img src="assets/Screenshot 2026-01-30 003441.png">
+    </div>
+  </div>
+
+  <!-- Trade In -->
+  <div class="card light">
+    <div class="card-content center">
+      <h2>Trade In</h2>
+      <p>Upgrade and save. It’s that easy.</p>
+      <button class="primary">Get your estimate</button>
+    </div>
+    <div class="card-image big">
+      <img src="assets/Screenshot 2026-01-30 003458.png">
+    </div>
+  </div>
+
+</section>
+
+<!-- TV -->
+<section class="hero tv">
+  <h1>Hijack</h1>
+  <p>TV show about a group of people who hijack a plane.</p>
+  <div class="buttons">
+    <button class="outline">Stream now</button>
+  </div>
+  <img src="assets/hijack.png" class="hero-img1" alt="TV show Hijack">
+</section>
+
+<footer>
+  <p>© 2026 Apple Clone — Educational use only.</p>
+</footer>
+
+</body>
+</html>
+ 
+<script>
+// Mobile sidebar toggle
+const hamburger = document.getElementById('hamburger');
+const mobileSidebar = document.getElementById('mobileSidebar');
+const mobileClose = document.getElementById('mobileClose');
+const overlay = document.getElementById('overlay');
+
+function openSidebar() {
+  mobileSidebar.classList.add('open');
+  overlay.hidden = false;
+  setTimeout(()=> overlay.classList.add('show'), 10);
+  hamburger.setAttribute('aria-expanded', 'true');
+  mobileSidebar.setAttribute('aria-hidden', 'false');
+}
+
+function closeSidebar() {
+  mobileSidebar.classList.remove('open');
+  overlay.classList.remove('show');
+  setTimeout(()=> overlay.hidden = true, 280);
+  hamburger.setAttribute('aria-expanded', 'false');
+  mobileSidebar.setAttribute('aria-hidden', 'true');
+}
+
+hamburger && hamburger.addEventListener('click', openSidebar);
+mobileClose && mobileClose.addEventListener('click', closeSidebar);
+overlay && overlay.addEventListener('click', closeSidebar);
+</script>
