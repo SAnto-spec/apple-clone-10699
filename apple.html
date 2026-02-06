@@ -21,6 +21,8 @@
       <a href="#">Watch</a>
       <a href="#">AirPods</a>
       <a href="#">TV & Home</a>
+      <a href="#">Entertainment</a>
+      <a href="#">Accessories</a>
       <a href="#">Support</a>
     </nav>
     <div class="icons">🔍 🛍️</div>
@@ -89,7 +91,8 @@
     <div class="card-content center">
       <h2>iPad Air</h2>
       <p>Now supercharged by the M3 chip.</p>
-      <button class="primary">Buy</button>
+      <button class="primary">Learn more</button>
+      <button class="outline">Buy</button>
     </div>
     <div class="card-image big">
       <img src="assets/Screenshot 2026-01-30 003357.png" alt="iPad Air device">
@@ -113,7 +116,8 @@
     <div class="card-content center">
       <h2>Watch Series 11</h2>
       <p>Turn resolutions into routines.</p>
-      <button class="primary">Buy</button>
+      <button class="primary">Learn more</button>
+      <button class="outline">Buy</button>
     </div>
     <div class="card-image big">
       <img src="assets/Screenshot 2026-01-30 003430.png" alt="Watch Series 11">
@@ -124,7 +128,8 @@
     <div class="card-content center">
       <h2>MacBook Pro 14″</h2>
       <p>Supercharged by M5.</p>
-      <button class="primary">Buy</button>
+      <button class="primary">Learn more</button>
+      <button class="outline">Buy</button>
     </div>
     <div class="card-image big">
       <img src="assets/Screenshot 2026-01-30 003441.png">
@@ -147,12 +152,43 @@
 
 <!-- TV -->
 <section class="hero tv">
-  <h1>Hijack</h1>
-  <p>TV show about a group of people who hijack a plane.</p>
-  <div class="buttons">
-    <button class="outline">Stream now</button>
+  <!-- Movie carousel: auto-advances to the next title -->
+  <div class="carousel" id="movieCarousel" aria-roledescription="carousel">
+    <div class="carousel-track-container">
+      <ul class="carousel-track">
+        <li class="carousel-slide current">
+          <img src="assets/hijack.png" alt="Hijack - TV show">
+          <div class="carousel-caption">
+            <h2>Hijack</h2>
+            <p>TV show about a group of people who hijack a plane.</p>
+          </div>
+        </li>
+        <li class="carousel-slide">
+          <img src="assets/mornshow.png" alt="Feature film">
+          <div class="carousel-caption">
+            <h2>Featured Movie</h2>
+            <p>Experience the next thrilling title.</p>
+          </div>
+        </li>
+        <li class="carousel-slide">
+          <img src="assets/neighbours.png" alt="Feature film">
+          <div class="carousel-caption">
+            <h2>Featured Movie</h2>
+            <p>Another great story to watch.</p>
+          </div>
+        </li>
+        <li class="carousel-slide">
+          <img src="assets/severance.png" alt="Feature film">
+          <div class="carousel-caption">
+            <h2>Featured Movie</h2>
+            <p>Stream now.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <button class="carousel-btn prev" aria-label="Previous">‹</button>
+    <button class="carousel-btn next" aria-label="Next">›</button>
   </div>
-  <img src="assets/hijack.png" class="hero-img1" alt="TV show Hijack">
 </section>
 
 <footer class="apple-footer">
@@ -258,9 +294,6 @@
   </div>
 </footer>
 
-</body>
-</html>
- 
 <script>
 // Mobile sidebar toggle
 const hamburger = document.getElementById('hamburger');
@@ -287,4 +320,49 @@ function closeSidebar() {
 hamburger && hamburger.addEventListener('click', openSidebar);
 mobileClose && mobileClose.addEventListener('click', closeSidebar);
 overlay && overlay.addEventListener('click', closeSidebar);
+
+// Carousel: auto-advance + controls
+(function(){
+  const track = document.querySelector('.carousel-track');
+  if(!track) return;
+  const slides = Array.from(track.children);
+  const nextBtn = document.querySelector('.carousel-btn.next');
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  const carousel = document.getElementById('movieCarousel');
+  let currentIndex = 0;
+  let interval = null;
+  const AUTO_MS = 4000;
+
+  function update() {
+    const amount = -currentIndex * 100;
+    track.style.transform = `translateX(${amount}%)`;
+    slides.forEach((s,i)=> s.classList.toggle('current', i===currentIndex));
+  }
+
+  function next() { currentIndex = (currentIndex+1)%slides.length; update(); }
+  function prev() { currentIndex = (currentIndex-1+slides.length)%slides.length; update(); }
+
+  function start() { stop(); interval = setInterval(next, AUTO_MS); }
+  function stop() { if(interval) clearInterval(interval); interval=null; }
+
+  nextBtn && nextBtn.addEventListener('click', ()=>{ next(); start(); });
+  prevBtn && prevBtn.addEventListener('click', ()=>{ prev(); start(); });
+
+  carousel && carousel.addEventListener('mouseenter', stop);
+  carousel && carousel.addEventListener('mouseleave', start);
+  carousel && carousel.addEventListener('touchstart', stop);
+  carousel && carousel.addEventListener('touchend', start);
+
+  document.addEventListener('keydown', e => {
+    if(!carousel) return;
+    if(e.key === 'ArrowLeft') prev();
+    if(e.key === 'ArrowRight') next();
+  });
+
+  window.addEventListener('load', ()=>{ update(); start(); });
+})();
+
 </script>
+
+</body>
+</html>

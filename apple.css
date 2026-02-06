@@ -155,12 +155,19 @@ button {
 }
 
 .primary {
+  border:#0071e3;
   background: #0071e3;
   color: #fff;
 }
 
 .secondary {
   background: #e8e8ed;
+  transition: background 0.2s ease;
+}
+
+.secondary:hover {
+  background: #0071e3;
+  color:#fff
 }
 
 .outline {
@@ -168,6 +175,13 @@ button {
   border: 1px solid #0071e3;
   color: #0071e3;
 }
+
+.outline:hover {
+  transition: background 0.2s ease, color 0.2s ease;
+  background: #0071e3;
+  color: #fff;
+}
+
 
 
 /* Layout helper for grouped buttons */
@@ -352,6 +366,84 @@ button {
   .hamburger { display: inline-block; }
   .mobile-sidebar { left: -320px; }
   .overlay[hidden] { display: none; }
+}
+
+/* Carousel (TV hero) */
+.carousel {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.carousel-track-container {
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.6s ease;
+  will-change: transform;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  position: relative;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+}
+
+.carousel-caption {
+  position: absolute;
+  left: 24px;
+  bottom: 28px;
+  color: #fff;
+  text-align: left;
+  text-shadow: 0 6px 24px rgba(0,0,0,0.6);
+}
+
+.carousel-caption h2 { font-size: 28px; margin: 0 0 6px; }
+.carousel-caption p { margin: 0; font-size: 16px; opacity: 0.95; }
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.95);
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  font-size: 22px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-btn.prev { left: 12px; }
+.carousel-btn.next { right: 12px; }
+
+/* Light caption on this hero background */
+.hero.tv .carousel-caption {
+  color: #001;
+  text-shadow: none;
+  background: linear-gradient(transparent, rgba(255,255,255,0.6));
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+@media (max-width: 900px) {
+  .carousel-caption h2 { font-size: 22px; }
+  .carousel-btn { width: 40px; height: 40px; font-size: 20px; }
 }
 
 /* FOOTER */
