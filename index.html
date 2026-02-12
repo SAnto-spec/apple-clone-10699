@@ -12,6 +12,7 @@
 <header class="navbar">
   <div class="nav-container">
     <img src="assets/applelogo.jpg" alt="Apple" class="logo-img">
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
 
     <nav>
       <div class="nav-item">
@@ -289,13 +290,17 @@
 
 <!-- iPhone HERO -->
 <section class="hero light">
-  <h1>iPhone</h1>
-  <p>Say hello to the latest generation of iPhone.</p>
-  <div class="buttons">
-    <button class="primary">Learn more</button>
-    <button class="secondary">Shop iPhone</button>
+  <div class="phone-hero">
+    <img src="assets/iphone.jpg" class="phone-img" alt="iPhone device">
+    <div class="phone-overlay">
+      <h1>iPhone</h1>
+      <p>Say hello to the latest generation of iPhone.</p>
+      <div class="buttons">
+        <button class="primary">Learn more</button>
+        <button class="secondary">Shop iPhone</button>
+      </div>
+    </div>
   </div>
-  <img src="assets/image.png" class="hero-img" alt="iPhone device">
 </section>
 
 <!-- CREATOR STUDIO -->
@@ -518,72 +523,8 @@
   </div>
 </footer>
 
-<script>
-// Mobile sidebar toggle
-const hamburger = document.getElementById('hamburger');
-const mobileSidebar = document.getElementById('mobileSidebar');
-const mobileClose = document.getElementById('mobileClose');
-const overlay = document.getElementById('overlay');
 
-function openSidebar() {
-  mobileSidebar.classList.add('open');
-  overlay.hidden = false;
-  setTimeout(()=> overlay.classList.add('show'), 10);
-  hamburger.setAttribute('aria-expanded', 'true');
-  mobileSidebar.setAttribute('aria-hidden', 'false');
-}
 
-function closeSidebar() {
-  mobileSidebar.classList.remove('open');
-  overlay.classList.remove('show');
-  setTimeout(()=> overlay.hidden = true, 280);
-  hamburger.setAttribute('aria-expanded', 'false');
-  mobileSidebar.setAttribute('aria-hidden', 'true');
-}
-
-hamburger && hamburger.addEventListener('click', openSidebar);
-mobileClose && mobileClose.addEventListener('click', closeSidebar);
-overlay && overlay.addEventListener('click', closeSidebar);
-
-// Carousel: auto-advance + controls
-(function(){
-  const track = document.querySelector('.carousel-track');
-  if(!track) return;
-  const slides = Array.from(track.children);
-  const nextBtn = document.querySelector('.carousel-btn.next');
-  const prevBtn = document.querySelector('.carousel-btn.prev');
-  const carousel = document.getElementById('movieCarousel');
-  let currentIndex = 0;
-  let interval = null;
-  const AUTO_MS = 4000;
-
-  function update() {
-    const amount = -currentIndex * 100;
-    track.style.transform = `translateX(${amount}%)`;
-    slides.forEach((s,i)=> s.classList.toggle('current', i===currentIndex));
-  }
-
-  function next() { currentIndex = (currentIndex+1)%slides.length; update(); }
-  function prev() { currentIndex = (currentIndex-1+slides.length)%slides.length; update(); }
-
-  function start() { stop(); interval = setInterval(next, AUTO_MS); }
-  function stop() { if(interval) clearInterval(interval); interval=null; }
-
-  nextBtn && nextBtn.addEventListener('click', ()=>{ next(); start(); });
-  prevBtn && prevBtn.addEventListener('click', ()=>{ prev(); start(); });
-
-  carousel && carousel.addEventListener('mouseenter', stop);
-  carousel && carousel.addEventListener('mouseleave', start);
-  carousel && carousel.addEventListener('touchstart', stop);
-  carousel && carousel.addEventListener('touchend', start);
-
-  document.addEventListener('keydown', e => {
-    if(!carousel) return;
-    if(e.key === 'ArrowLeft') prev();
-    if(e.key === 'ArrowRight') next();
-  });
-
-  window.addEventListener('load', ()=>{ update(); start(); });
-})();
-
-</script>
+<script src="script.js"></script>
+</body>
+</html>
