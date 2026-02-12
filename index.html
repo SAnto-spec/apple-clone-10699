@@ -292,15 +292,33 @@
 <section class="hero light">
   <div class="phone-hero">
     <img src="assets/iphone.jpg" class="phone-img" alt="iPhone device">
+
     <div class="phone-overlay">
       <h1>iPhone</h1>
       <p>Say hello to the latest generation of iPhone.</p>
+
       <div class="buttons">
         <button class="primary">Learn more</button>
         <button class="secondary">Shop iPhone</button>
       </div>
+
     </div>
   </div>
+</section>
+
+<!-- WATCH SERIES 11 HERO -->
+<section class="hero watch-hero light">
+  <div class="watch-overlay">
+    <h1>WATCH SERIES 11</h1>
+    <p>The ultimate way to watch your health.</p>
+
+    <div class="buttons">
+      <button class="primary">Learn more</button>
+      <button class="outline">Buy</button>
+    </div>
+  </div>
+
+  <img src="assets/watchseries.jpg" class="watch-img" alt="Apple Watch Series 11">
 </section>
 
 <!-- CREATOR STUDIO -->
@@ -319,78 +337,66 @@
 <section class="grid">
 
   <!-- Privacy -->
-  <div class="card dark">
+  <div class="card dark fill-card">
     <div class="card-content center">
       <h2>Privacy</h2>
       <p>Designed into everything we do.</p>
       <button class="primary">Learn more</button>
     </div>
-    <div class="card-image big" >
-      <img src="assets/appleprivacy.jpg" alt="Privacy feature">
-      
-    </div>
+    <img src="assets/appleprivacy.jpg" alt="Privacy feature" class="card-bg-img">
   </div>
 
   <!-- iPad Air -->
-  <div class="card light">
+  <div class="card light fill-card">
     <div class="card-content center">
       <h2>iPad Air</h2>
       <p>Now supercharged by the M3 chip.</p>
       <button class="primary">Learn more</button>
       <button class="outline">Buy</button>
     </div>
-    <div class="card-image big">
-      <img src="assets/Screenshot 2026-01-30 003357.png" alt="iPad Air device">
-    </div>
+    <img src="assets/air.jpg" alt="iPad Air device" class="card-bg-img">
   </div>
 
   <!-- Apple Watch -->
-  <div class="card dark">
+  <div class="card dark fill-card">
     <div class="card-content center">
       <h2>Apple Watch</h2>
       <p>The new Black Unity band.</p>
       <button class="secondary">Shop</button>
     </div>
-    <div class="card-image big">
-      <img src="assets/Screenshot 2026-01-30 003414.png" alt="Apple Watch">
-    </div>
+    <img src="assets/watch.jpg" alt="Apple Watch" class="card-bg-img">
   </div>
 
   <!-- Watch Series 11 -->
-  <div class="card light">
+  <div class="card light fill-card">
     <div class="card-content center">
       <h2>Watch Series 11</h2>
       <p>Turn resolutions into routines.</p>
       <button class="primary">Learn more</button>
       <button class="outline">Buy</button>
     </div>
-    <div class="card-image big">
-      <img src="assets/Screenshot 2026-01-30 003430.png" alt="Watch Series 11">
-    </div>
+    <img src="assets/Screenshot 2026-01-30 003430.png" alt="Watch Series 11" class="card-bg-img">
   </div>
 
-  <div class="card dark">
+  <!-- MacBook -->
+  <div class="card dark fill-card">
     <div class="card-content center">
       <h2>MacBook Pro 14″</h2>
       <p>Supercharged by M5.</p>
       <button class="primary">Learn more</button>
       <button class="outline">Buy</button>
     </div>
-    <div class="card-image big">
-      <img src="assets/Screenshot 2026-01-30 003441.png">
-    </div>
+    <img src="assets/mack.jpg" alt="MacBook Pro" class="card-bg-img">
   </div>
 
   <!-- Trade In -->
-  <div class="card light">
+  <div class="card light fill-card">
     <div class="card-content center">
       <h2>Trade In</h2>
       <p>Upgrade and save. It’s that easy.</p>
       <button class="primary">Get your estimate</button>
     </div>
-    <div class="card-image big">
-      <img src="assets/Screenshot 2026-01-30 003458.png">
-    </div>
+    <img src="assets/trade.jpg" alt="Trade In" class="card-bg-img">
   </div>
 
 </section>
@@ -417,6 +423,20 @@
     </div>
     <button class="carousel-btn prev" aria-label="Previous">‹</button>
     <button class="carousel-btn next" aria-label="Next">›</button>
+  </div>
+</section>
+
+<section class="preferences-section">
+  <div class="preferences-container">
+    <h2>Your Preferences</h2>
+
+    <div class="user-input-row">
+      <input type="text" id="usernameInput" placeholder="Enter your name">
+      <button id="saveUsernameBtn" class="primary small-btn">Save</button>
+    </div>
+
+    <p id="welcomeUser" class="welcome-text"></p>
+    <p id="visitCountDisplay" class="visit-text"></p>
   </div>
 </section>
 
